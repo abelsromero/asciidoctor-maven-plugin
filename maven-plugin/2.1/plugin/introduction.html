@@ -152,22 +152,104 @@
   <div class="content">
 <article class="doc">
 <h1 class="page">Asciidoctor Maven Plugin</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>The Asciidoctor Maven Plugin is the official way to convert your <a href="http://asciidoc.org">AsciiDoc</a> documentation using <a href="http://asciidoctor.org">Asciidoctor</a> from an <a href="http://maven.apache.org">Apache Maven</a> build.</p>
+<p>The Asciidoctor Maven Plugin is used to convert AsciiDoc documents using <a href="https://asciidoctor.org">Asciidoctor</a>.
+The plugin offers a comprehensive way to configure a conversion process using <a href="https://github.com/asciidoctor/asciidoctorj">Asciidoctorj</a> in a declarative way.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="goals-overview"><a class="anchor" href="#goals-overview"></a>Goals overview</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>The conversion can happen in 2 flavors:</p>
+<p>The plugin has 3 goals.
+None of these are bound to any specific phase.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>as a Maven plugin: AsciiDoc files are converted at full Asciidoctor power independently from Maven site,</p>
+<p><a href="goals/process-asciidoc.html" class="page">asciidoctor:process-asciidoc</a>:
+main goal of the plugin, it is used to convert documents during a normal Maven build.</p>
 </li>
 <li>
-<p>as a Maven site integration: AsciiDoc files are integrated with Maven reports, which comes with
-a few limitations (see below for details).</p>
+<p><a href="goals/auto-refresh.html" class="page">asciidoctor:auto-refresh</a>:
+used to support writing documents.
+This goal will run until stopped and will convert documents online when they are modified.</p>
 </li>
-</ol>
+<li>
+<p><a href="goals/http.html" class="page">asciidoctor:http</a>:
+used to support writing HTML documents.
+On top of converting documents online when they are modified, it will push them to a local HTTP server.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specific instructions can be found in the specific <em>usage</em> page of each goal.</p>
+</div>
+<div class="paragraph">
+<p>Here is a simple example of an HTML conversion.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;plugin&gt;
+    &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
+    &lt;artifactId&gt;asciidoctor-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;2.1.0&lt;/version&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;id&gt;convert-to-html&lt;/id&gt;
+            &lt;phase&gt;generate-resources&lt;/phase&gt; <i class="conum" data-value="1"></i><b>(1)</b>
+            &lt;goals&gt;
+                &lt;goal&gt;process-asciidoc&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+                &lt;outputDirectory&gt;${project.build.directory}/html&lt;/outputDirectory&gt; <i class="conum" data-value="2"></i><b>(2)</b>
+                &lt;attributes&gt; <i class="conum" data-value="3"></i><b>(3)</b>
+                    &lt;source-highlighter&gt;coderay&lt;/source-highlighter&gt;
+                    &lt;imagesdir&gt;./images&lt;/imagesdir&gt;
+                    &lt;toc&gt;left&lt;/toc&gt;
+                    &lt;icons&gt;font&lt;/icons&gt;
+                &lt;/attributes&gt;
+            &lt;/configuration&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+&lt;/plugin&gt;</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Asciidoctor maven plugin&#8217;s phase and goal must be set explicitly in an execution block.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Asciidoctor options can be set in the <code>&lt;configuration&gt;</code> section.
+Note the backend is <code>html5</code> by default.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Asciidoctor attributes can be set inside the <code>&lt;attributes&gt;</code> section.
+These are unrestricted key value pairs, with a special case for <a href="goals/process-asciidoc.html#setting-boolean-values" class="page">boolean values</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can find many examples ready to copy-paste in the <a href="https://github.com/asciidoctor/asciidoctor-maven-examples">Asciidoctor Maven examples</a> project.</p>
+</div>
+</div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="../index.html">Asciidoctor Maven Plugin</a></span>

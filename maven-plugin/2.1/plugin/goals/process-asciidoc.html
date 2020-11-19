@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Converting document (process-asciidoc) :: maven-plugin docs</title>
+    <title>process-asciidoc: Converting documents :: maven-plugin docs</title>
     <link rel="prev" href="../introduction.html">
     <link rel="next" href="auto-refresh.html">
     <meta name="generator" content="Antora 2.3.4">
@@ -152,9 +152,13 @@
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Converting document (<code>process-asciidoc</code>)</h1>
+<h1 class="page">process-asciidoc: Converting documents</h1>
 <div id="preamble">
 <div class="sectionbody">
+<div class="paragraph">
+<p>Converts Asciidoc documents using <a href="https://github.com/asciidoctor/asciidoctorj">Asciidoctorj</a>.
+Additionally, the goal takes care of placing additional resources (eg. images) in the output path.</p>
+</div>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -164,7 +168,7 @@
 <td class="content">
 <div class="paragraph">
 <p>2.0.0 version introduced breaking changes.
-If you are upgrading from a previous version, please read the <a href="#docs/v2-migration-guide.adoc" class="page unresolved">v2 migration guide</a>.</p>
+If you are upgrading from a previous version, please read the <a href="../v2-migration-guide.html" class="page">v2 migration guide</a>.</p>
 </div>
 </td>
 </tr>
@@ -173,7 +177,7 @@ If you are upgrading from a previous version, please read the <a href="#docs/v2-
 </div>
 </div>
 <div class="sect1">
-<h2 id="_setup"><a class="anchor" href="#_setup"></a>Setup</h2>
+<h2 id="setup"><a class="anchor" href="#setup"></a>Setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>As this is a typical Maven plugin, simply declare the plugin in the <code>&lt;plugins&gt;</code> section of your POM file:</p>
@@ -185,7 +189,12 @@ If you are upgrading from a previous version, please read the <a href="#docs/v2-
     &lt;plugin&gt;
         &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
         &lt;artifactId&gt;asciidoctor-maven-plugin&lt;/artifactId&gt;
-        &lt;version&gt;2.1.0&lt;/version&gt; <i class="conum" data-value="1"></i><b>(1)</b>
+        &lt;version&gt;2.1.0&lt;/version&gt;
+        &lt;dependency&gt; <i class="conum" data-value="1"></i><b>(1)</b>
+            &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
+            &lt;artifactId&gt;asciidoctorj&lt;/artifactId&gt;
+            &lt;version&gt;${asciidoctorj.version}&lt;/version&gt;
+        &lt;/dependency&gt;
         ...
     &lt;/plugin&gt;
 &lt;/plugins&gt;</code></pre>
@@ -195,12 +204,13 @@ If you are upgrading from a previous version, please read the <a href="#docs/v2-
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>As this plugin tracks the version of Asciidoctor, you can use whichever version of Asciidoctor you prefer.</td>
+<td>The plugin will use the latest Asciidoctorj version available at release.
+To change it, set the desired version as a plugin dependency.</td>
 </tr>
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Conversion setup</div>
+<div class="title">Goal setup</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;plugin&gt;
     ...
@@ -220,7 +230,7 @@ If you are upgrading from a previous version, please read the <a href="#docs/v2-
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This is simply an unique id for the execution.</td>
+<td>This is simply a unique id for the execution.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -235,13 +245,10 @@ If you are upgrading from a previous version, please read the <a href="#docs/v2-
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
+<h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There are several configuration options that the Asciidoctor Maven plugin accepts, which parallel the options in Asciidoctor:</p>
-</div>
-<div class="paragraph">
-<p>There are several configuration options that the Asciidoctor Maven plugin accepts, which parallel the options in Asciidoctor:</p>
+<p>There are several configuration parameters that the Asciidoctor Maven plugin accepts, which parallel the options in Asciidoctor:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -250,9 +257,6 @@ If you are upgrading from a previous version, please read the <a href="#docs/v2-
 <p>path where source files are located.
 By default checks for <em class="path">${basedir}/src/docs/asciidoc</em>, <em class="path">${basedir}/src/asciidoc</em> or <em class="path">${basedir}/src/main/asciidoc</em> in that order.
 When a custom value is set, no other paths are checked.</p>
-</dd>
-</dl>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -269,8 +273,7 @@ This is useful to split your sources in sets of master documents and included pa
 </tr>
 </table>
 </div>
-<div class="dlist">
-<dl>
+</dd>
 <dt class="hdlist1">sourceDocumentName</dt>
 <dd>
 <p>an override to process a single source file; defaults to all files in <code class="path">${sourceDirectory}</code>.</p>
@@ -440,6 +443,29 @@ Refer to the <a href="http://asciidoctor.org/docs/user-manual/#attribute-catalog
 <div class="paragraph">
 <p>Note that when defining a build with multiple executions, shared attributes can be set in the global <code>&lt;configuration&gt;</code> section of the plugin.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Boolean attributes only require to be enabled or <em>set</em>.
+These, can be set with a empty tag or a boolean value.
+To <em>unset</em> an attribute, use value <code>false</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;embedded/&gt;
+&lt;sectnums&gt;true&lt;/sectnums&gt;
+&lt;linkcss&gt;false&lt;/linkcss&gt;</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </dd>
 <dt class="hdlist1">embedAssets</dt>
 <dd>
@@ -496,9 +522,6 @@ For each extension, the implementation class must be specified in the <code>clas
 </tr>
 </table>
 </div>
-</dd>
-</dl>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -506,14 +529,15 @@ For each extension, the implementation class must be specified in the <code>clas
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Extensions can also be integrated through the SPI interface implementation.
-This method does not require any configuration in the <em class="path">pom.xml</em>, see <a href="https://github.com/asciidoctor/asciidoctorj#extension-spi">Extension SPI</a> for details.
+<div class="paragraph">
+<p>Extensions can also be integrated through the SPI interface implementation.
+This method does not require any configuration in the <em class="path">pom.xml</em>, see <a href="https://github.com/asciidoctor/asciidoctorj/blob/master/docs/integrator-guide.adoc#automatically-loading-extensions">Automatically loading extensions</a> for details.</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
-<div class="dlist">
-<dl>
+</dd>
 <dt class="hdlist1">enableVerbose</dt>
 <dd>
 <p>enables Asciidoctor verbose messages, defaults to <code>false</code>.
@@ -590,15 +614,6 @@ All matching messages will appear as ERROR in Maven output.</td>
 </tr>
 </table>
 </div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</dd>
-</dl>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -614,25 +629,14 @@ See <a href="https://github.com/asciidoctor/asciidoctor/issues/2722">#2722</a> i
 </tr>
 </table>
 </div>
+</li>
+</ul>
 </div>
+</li>
+</ul>
 </div>
-<div class="sect1">
-<h2 id="_setting_boolean_values"><a class="anchor" href="#_setting_boolean_values"></a>Setting boolean values</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Boolean attributes in asciidoctor, such as <code>sectnums</code>, <code>linkcss</code> or <code>copycss</code> can be set with a value of <code>true</code> and unset with a value of <code>false</code>.</p>
-</div>
-<div class="sect2">
-<h3 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h3>
-<div class="paragraph">
-<p>In the <code>&lt;attributes&gt;</code> part of the Asciidoctor Maven Plugin configuration:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;sectnums&gt;true&lt;/sectnums&gt;
-&lt;linkcss&gt;false&lt;/linkcss&gt;</code></pre>
-</div>
-</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>

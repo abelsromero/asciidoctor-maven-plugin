@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Asciidoctor Maven Plugin :: maven-plugin docs</title>
+    <title>Asciidoctor Maven Tools :: maven-plugin docs</title>
     <link rel="next" href="plugin/introduction.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
@@ -142,15 +142,19 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Asciidoctor Maven Plugin</a></li>
+    <li><a href="index.html">Asciidoctor Maven Tools</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/abelsromero/asciidoctor-maven-plugin/edit/poc/antora-docs/docs/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Asciidoctor Maven Plugin</h1>
+<h1 class="page">Asciidoctor Maven Tools</h1>
 <div class="paragraph">
 <p>The Asciidoctor Maven Plugin is the official way to convert your <a href="http://asciidoc.org">AsciiDoc</a> documentation using <a href="http://asciidoctor.org">Asciidoctor</a> from an <a href="http://maven.apache.org">Apache Maven</a> build.</p>
+</div>
+<div class="paragraph">
+<p>The project main goal is to offer a thin layer on top of <a href="https://github.com/asciidoctor/asciidoctorj">Asciidoctorj</a> following as much as possible to common Maven practices.</p>
 </div>
 <div class="paragraph">
 <p>The conversion can happen in 2 flavors:</p>
@@ -158,11 +162,10 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>as a Maven plugin: AsciiDoc files are converted at full Asciidoctor power independently from Maven site,</p>
+<p>As a <a href="plugin/introduction.html" class="page">Maven plugin</a>: AsciiDoc files are converted at full Asciidoctor power independently from Maven site,</p>
 </li>
 <li>
-<p>as a Maven site integration: AsciiDoc files are integrated with Maven reports, which comes with
-a few limitations (see below for details).</p>
+<p>As a <a href="plugin/introduction.html" class="page">Maven site module</a>: AsciiDoc files are integrated with <a href="https://maven.apache.org/doxia/">Maven Doxia</a> tools, however, with a few limitations.</p>
 </li>
 </ol>
 </div>
