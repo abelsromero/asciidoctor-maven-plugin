@@ -77,10 +77,19 @@
     <a class="nav-link" href="usage.html">Usage</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Help &amp; Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="tips-and-tricks.html">Tips and tricks</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="v2-migration-guide.html">v2.x.x migration guide</a>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="v2-migration-guide.html">v2 migration guide</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -93,7 +102,7 @@
     <span class="nav-text">Site integration</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../site-integration/site-integration.html">Site integration</a>
+    <a class="nav-link" href="../site-integration/site-integration.html">Setup &amp; Configuration</a>
   </li>
 </ul>
   </li>
@@ -144,7 +153,8 @@
   <ul>
     <li><a href="../index.html">Asciidoctor Maven Plugin</a></li>
     <li>Maven Plugin</li>
-    <li><a href="v2-migration-guide.html">v2.x.x migration guide</a></li>
+    <li>Help &amp; Guides</li>
+    <li><a href="v2-migration-guide.html">v2 migration guide</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/abelsromero/asciidoctor-maven-plugin/edit/poc/antora-docs/docs/modules/plugin/pages/v2-migration-guide.adoc">Edit this Page</a></div>
@@ -188,7 +198,7 @@ Also, when possible aligning with other build solutions options like the <a href
 </li>
 <li>
 <p>Make clear distinction between Asciidoctor options and attributes.
-This simplifies the plugin&#8217;s code and projects configuration avoiding ambiguities.</p>
+This simplifies the plugin&#8217;s code and projects' configuration avoiding ambiguities.</p>
 </li>
 </ul>
 </div>
@@ -198,9 +208,10 @@ This simplifies the plugin&#8217;s code and projects configuration avoiding ambi
 <h2 id="changes"><a class="anchor" href="#changes"></a>2. Changes</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="removal-of-support-for-java-7-java-8-will-be-the-minimum-required-version"><a class="anchor" href="#removal-of-support-for-java-7-java-8-will-be-the-minimum-required-version"></a>2.1. Removal of support for Java 7, Java 8 will be the minimum required version</h3>
+<h3 id="removal-of-support-for-java-7"><a class="anchor" href="#removal-of-support-for-java-7"></a>2.1. Removal of support for Java 7</h3>
 <div class="paragraph">
-<p>If you are forced to use Java 7, we recommend using the version 1.5.8 with Asciidoctorj 1.6.2 for the most up to date features.</p>
+<p>From v2.x.x Java 8 will be the minimum required version.
+If you are forced to use Java 7, we recommend using the version 1.5.8 with Asciidoctorj 1.6.2 for the most up to date features.</p>
 </div>
 </div>
 <div class="sect2">
@@ -209,7 +220,7 @@ This simplifies the plugin&#8217;s code and projects configuration avoiding ambi
 <p>Related discussion: <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/issues/296" class="bare">https://github.com/asciidoctor/asciidoctor-maven-plugin/issues/296</a></p>
 </div>
 <div class="paragraph">
-<p>Until v 1.5.8 it was possible to set the <code>imagesdir</code> Asciidoctor attribute (<a href="https://asciidoctor.org/docs/user-manual/#setting-the-location-of-images" class="bare">https://asciidoctor.org/docs/user-manual/#setting-the-location-of-images</a>) using the special <code>imagesDir</code> configuration as follows.</p>
+<p>Until v1.5.8 it was possible to set the <code>imagesdir</code> Asciidoctor attribute (<a href="https://asciidoctor.org/docs/user-manual/#setting-the-location-of-images" class="bare">https://asciidoctor.org/docs/user-manual/#setting-the-location-of-images</a>) using the special <code>imagesDir</code> configuration as follows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -251,7 +262,7 @@ If you are relying on the default value, make sure to add the attribute as in th
 <p>To avoid ambiguity between the configuration and attributes section, and make configuration more clear.</p>
 </div>
 <div class="paragraph">
-<p><strong>The configuration option <code>sourceHighlighter</code> will be removed in favour of setting it as an attribute.</strong>
+<p><strong>The configuration option <code>sourceHighlighter</code> has been removed in favour of setting it as an attribute.</strong>
 If you are using it, you will need to set it as follows:</p>
 </div>
 <div class="listingblock">
@@ -341,8 +352,8 @@ This will allow the use of multiple template directories.</p>
 </div>
 <div class="paragraph">
 <p>Current default backend is <code>docbook</code>, contrary to Asciidoctor which is <code>html5</code>.
-This made sense back when the plugin was create to simplify configuration and DocBook was the main scenario.
-Nowadays the main usage is HTML conversion, so it makes sense to set `html5 as default backend.
+This made sense back when the plugin was created because DocBook was the main scenario.
+Nowadays the main usage is HTML conversion, so it makes sense to set <code>html5</code> as default backend.
 This should reduce configuration for most users.</p>
 </div>
 <div class="paragraph">
@@ -376,7 +387,7 @@ For advanced conversion needs, probably check <a href="https://antora.org/" clas
 <p>Related discussion: <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/issues/254" class="bare">https://github.com/asciidoctor/asciidoctor-maven-plugin/issues/254</a>.</p>
 </div>
 <div class="paragraph">
-<p>Previous versions of the plugin searches for AsciiDoc documents in <code>src/main/asciidoc</code>.
+<p>Previous versions of the plugin search for AsciiDoc documents in <code>src/main/asciidoc</code>.
 In case the folder does not exist, the plugin skips the execution.</p>
 </div>
 <div class="paragraph">
@@ -398,13 +409,13 @@ If the path does not exist, <code>src/asciidoc</code> and <code>src/main/asciido
 </div>
 <div class="paragraph">
 <p>These are simple and can be spotted with help of the IDE once the AsciidoctorJ dependency has been updated.
-Please, review them before upgrading the maven-plugin.</p>
+Please, review them alongside the maven-plugin.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="tips-and-tricks.html">Tips and tricks</a></span>
-  <span class="next"><a href="../site-integration/site-integration.html">Site integration</a></span>
+  <span class="next"><a href="../site-integration/site-integration.html">Setup &amp; Configuration</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
