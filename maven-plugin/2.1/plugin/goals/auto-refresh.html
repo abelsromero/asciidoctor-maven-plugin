@@ -251,7 +251,7 @@ Or it is manually killed with <em>ctrl+c</em>.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Due to how maven limitations, it is possible to run <code>auto-refresh</code> on your current project without changes provided the configuration is at top plugin level.
+<p>Due to some maven limitations, it is possible to run <code>auto-refresh</code> on your current project without changes provided the configuration is at top plugin level.
 Running <code>mvn asciidoctor:auto-refresh</code> will start, but will ignore <code>&lt;configuration&gt;</code> blocks inside <code>&lt;executions&gt;</code>.</p>
 </div>
 <div class="listingblock">
@@ -307,7 +307,7 @@ Running <code>mvn asciidoctor:auto-refresh</code> will start, but will ignore <c
 <h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The mojo inherits the same parameters as <a href="process-asciidoc.html" class="page">process-asciidoc</a> mojo and adds an additional parameter:</p>
+<p>This goal inherits the same parameters as <a href="process-asciidoc.html" class="page">process-asciidoc</a> and adds an additional parameter:</p>
 </div>
 <div class="dlist">
 <dl>
