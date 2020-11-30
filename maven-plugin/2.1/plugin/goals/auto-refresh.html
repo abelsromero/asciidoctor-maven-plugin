@@ -47,7 +47,7 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../../index.html">Asciidoctor Maven Plugin</a></h3>
+    <h3 class="title"><a href="../../index.html">Maven Tools</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
@@ -77,6 +77,9 @@
     <a class="nav-link" href="../usage.html">Usage</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../command-line-configuration.html">Command Line Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../examples.html">Examples</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -84,7 +87,7 @@
     <span class="nav-text">Help &amp; Guides</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../tips-and-tricks.html">Tips and tricks</a>
+    <a class="nav-link" href="../tips-and-tricks.html">Tips and Tricks</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../v2-migration-guide.html">v2 migration guide</a>
@@ -99,7 +102,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Site integration</span>
+    <span class="nav-text">Maven Site Integration</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../site-integration/site-integration.html">Setup &amp; Configuration</a>
@@ -112,7 +115,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Project documentation</span>
+    <span class="nav-text">Project Documentation</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../project/contributing.html">Contributing</a>
@@ -129,12 +132,12 @@
 </div>
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
-    <span class="title">Asciidoctor Maven Plugin</span>
+    <span class="title">Maven Tools</span>
     <span class="version">2.1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <span class="title">Asciidoctor Maven Plugin</span>
+      <span class="title">Maven Tools</span>
       <ul class="versions">
         <li class="version is-current is-latest">
           <a href="../../index.html">2.1</a>
@@ -151,13 +154,13 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../../index.html">Asciidoctor Maven Plugin</a></li>
+    <li><a href="../../index.html">Maven Tools</a></li>
     <li>Maven Plugin</li>
     <li>Goals</li>
     <li><a href="auto-refresh.html">auto-refresh</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/abelsromero/asciidoctor-maven-plugin/edit/poc/antora-docs/docs/modules/plugin/pages/goals/auto-refresh.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/abelsromero/asciidoctor-maven-plugin/edit/master/docs/modules/plugin/pages/goals/auto-refresh.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
@@ -423,14 +426,14 @@ All output will be redirected to the same file, the same way as the <code>-o, --
 <p>enables to specify whether the documents should be converted in the same folder structure as in the source directory or not, defaults to <code>false</code>.
 When <code>true</code>, instead of generating all output in a single folder, output files are generated in the same structure.
 See the following example</p>
-<div class="listingblock">
+<div class="literalblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>    ├── docs                          ├── docs
+<pre>    ├── docs                          ├── docs
     │   ├── examples.adoc             │   ├── examples.html
     │   └── examples            =&gt;    │   └── examples
     │       ├── html.adoc             │       ├── html.html
     │       └── docbook.adoc          │       └── docbook.html
-    └── index.adoc                    └── index.html</code></pre>
+    └── index.adoc                    └── index.html</pre>
 </div>
 </div>
 </dd>
@@ -599,10 +602,8 @@ For each extension, the implementation class must be specified in the <code>clas
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>Extensions can also be integrated through the SPI interface implementation.
-This method does not require any configuration in the <em class="path">pom.xml</em>, see <a href="https://github.com/asciidoctor/asciidoctorj/blob/master/docs/integrator-guide.adoc#automatically-loading-extensions">Automatically loading extensions</a> for details.</p>
-</div>
+Extensions can also be integrated through the SPI interface implementation.
+This method does not require any configuration in the <em class="path">pom.xml</em>, see <a href="https://github.com/asciidoctor/asciidoctorj/blob/master/docs/integrator-guide.adoc#automatically-loading-extensions">Automatically loading extensions</a> for details.
 </td>
 </tr>
 </table>
@@ -691,10 +692,8 @@ All matching messages will appear as ERROR in Maven output.</td>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>Since version 1.5.8 of AsciidoctorJ set <code>enableVerbose</code> to <code>true</code> option to validate internal cross references, this is being improved to avoid false positives
-See <a href="https://github.com/asciidoctor/asciidoctor/issues/2722">#2722</a> if your are interested in the details.</p>
-</div>
+Since version 1.5.8 of AsciidoctorJ set <code>enableVerbose</code> to <code>true</code> option to validate internal cross references, this is being improved to avoid false positives-
+See <a href="https://github.com/asciidoctor/asciidoctor/issues/2722">#2722</a> if your are interested in the details.
 </td>
 </tr>
 </table>

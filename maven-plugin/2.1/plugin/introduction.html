@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Asciidoctor Maven Plugin :: maven-plugin docs</title>
+    <title>Introduction :: maven-plugin docs</title>
     <link rel="prev" href="../index.html">
     <link rel="next" href="goals/process-asciidoc.html">
     <meta name="generator" content="Antora 2.3.4">
@@ -47,7 +47,7 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../index.html">Asciidoctor Maven Plugin</a></h3>
+    <h3 class="title"><a href="../index.html">Maven Tools</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
@@ -77,6 +77,9 @@
     <a class="nav-link" href="usage.html">Usage</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="command-line-configuration.html">Command Line Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="examples.html">Examples</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -84,7 +87,7 @@
     <span class="nav-text">Help &amp; Guides</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="tips-and-tricks.html">Tips and tricks</a>
+    <a class="nav-link" href="tips-and-tricks.html">Tips and Tricks</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="v2-migration-guide.html">v2 migration guide</a>
@@ -99,7 +102,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Site integration</span>
+    <span class="nav-text">Maven Site Integration</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../site-integration/site-integration.html">Setup &amp; Configuration</a>
@@ -112,7 +115,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Project documentation</span>
+    <span class="nav-text">Project Documentation</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../project/contributing.html">Contributing</a>
@@ -129,12 +132,12 @@
 </div>
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
-    <span class="title">Asciidoctor Maven Plugin</span>
+    <span class="title">Maven Tools</span>
     <span class="version">2.1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <span class="title">Asciidoctor Maven Plugin</span>
+      <span class="title">Maven Tools</span>
       <ul class="versions">
         <li class="version is-current is-latest">
           <a href="../index.html">2.1</a>
@@ -151,16 +154,16 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../index.html">Asciidoctor Maven Plugin</a></li>
+    <li><a href="../index.html">Maven Tools</a></li>
     <li>Maven Plugin</li>
     <li><a href="introduction.html">Introduction</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/abelsromero/asciidoctor-maven-plugin/edit/poc/antora-docs/docs/modules/plugin/pages/introduction.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/abelsromero/asciidoctor-maven-plugin/edit/master/docs/modules/plugin/pages/introduction.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Asciidoctor Maven Plugin</h1>
+<h1 class="page">Introduction</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
@@ -176,23 +179,23 @@ The plugin offers a comprehensive way to configure a conversion process using <a
 <p>The plugin has 3 goals.
 None of these are bound to any specific phase.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="goals/process-asciidoc.html" class="page">asciidoctor:process-asciidoc</a>:
-main goal of the plugin, it is used to convert documents during a normal Maven build.</p>
-</li>
-<li>
-<p><a href="goals/auto-refresh.html" class="page">asciidoctor:auto-refresh</a>:
-used to support writing documents.
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="goals/process-asciidoc.html" class="page">asciidoctor:process-asciidoc</a></dt>
+<dd>
+<p>main goal of the plugin, it is used to convert documents during a normal Maven build.</p>
+</dd>
+<dt class="hdlist1"><a href="goals/auto-refresh.html" class="page">asciidoctor:auto-refresh</a></dt>
+<dd>
+<p>used to support writing documents.
 This goal will run until stopped and will convert documents online when they are modified.</p>
-</li>
-<li>
-<p><a href="goals/http.html" class="page">asciidoctor:http</a>:
-used to support writing HTML documents.
+</dd>
+<dt class="hdlist1"><a href="goals/http.html" class="page">asciidoctor:http</a></dt>
+<dd>
+<p>used to support writing HTML documents.
 On top of converting documents online when they are modified, it will push them to a local HTTP server.</p>
-</li>
-</ul>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -253,7 +256,7 @@ These are unrestricted key value pairs, with a special case for <a href="goals/p
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../index.html">Asciidoctor Maven Plugin</a></span>
+  <span class="prev"><a href="../index.html">Maven Tools</a></span>
   <span class="next"><a href="goals/process-asciidoc.html">process-asciidoc</a></span>
 </nav>
 </article>

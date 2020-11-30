@@ -47,7 +47,7 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../index.html">Asciidoctor Maven Plugin</a></h3>
+    <h3 class="title"><a href="../index.html">Maven Tools</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
@@ -77,6 +77,9 @@
     <a class="nav-link" href="../plugin/usage.html">Usage</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugin/command-line-configuration.html">Command Line Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugin/examples.html">Examples</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -84,7 +87,7 @@
     <span class="nav-text">Help &amp; Guides</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../plugin/tips-and-tricks.html">Tips and tricks</a>
+    <a class="nav-link" href="../plugin/tips-and-tricks.html">Tips and Tricks</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../plugin/v2-migration-guide.html">v2 migration guide</a>
@@ -99,7 +102,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Site integration</span>
+    <span class="nav-text">Maven Site Integration</span>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="site-integration.html">Setup &amp; Configuration</a>
@@ -112,7 +115,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Project documentation</span>
+    <span class="nav-text">Project Documentation</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../project/contributing.html">Contributing</a>
@@ -129,12 +132,12 @@
 </div>
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
-    <span class="title">Asciidoctor Maven Plugin</span>
+    <span class="title">Maven Tools</span>
     <span class="version">2.1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <span class="title">Asciidoctor Maven Plugin</span>
+      <span class="title">Maven Tools</span>
       <ul class="versions">
         <li class="version is-current is-latest">
           <a href="../index.html">2.1</a>
@@ -151,12 +154,12 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../index.html">Asciidoctor Maven Plugin</a></li>
-    <li>Site integration</li>
+    <li><a href="../index.html">Maven Tools</a></li>
+    <li>Maven Site Integration</li>
     <li><a href="site-integration.html">Setup &amp; Configuration</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/abelsromero/asciidoctor-maven-plugin/edit/poc/antora-docs/docs/modules/site-integration/pages/site-integration.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/abelsromero/asciidoctor-maven-plugin/edit/master/docs/modules/site-integration/pages/site-integration.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
@@ -301,11 +304,9 @@ This is necessary since the <code>&lt;configuration&gt;</code> element is used t
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>The Asciidoctor base directory (i.e., document root) is configured as <em class="path">src/site/asciidoc</em> by default, though this can be overridden.
+The Asciidoctor base directory (i.e., document root) is configured as <em class="path">src/site/asciidoc</em> by default, though this can be overridden.
 To do so, you can use either maven-site-plugin <code>siteDirectory</code> or Asciidoctor <code>baseDir</code> configuration options.
-Note that the first will affect the default resources directory also.</p>
-</div>
+Note that the first will affect the default resources directory also.
 </td>
 </tr>
 </table>
