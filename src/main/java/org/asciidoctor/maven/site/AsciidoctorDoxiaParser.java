@@ -1,5 +1,8 @@
 package org.asciidoctor.maven.site;
 
+import org.apache.commons.io.input.CharSequenceReader;
+import org.apache.maven.doxia.module.markdown.MarkdownParser;
+import org.apache.maven.doxia.module.xhtml.XhtmlParser;
 import org.apache.maven.doxia.parser.AbstractTextParser;
 import org.apache.maven.doxia.parser.ParseException;
 import org.apache.maven.doxia.parser.Parser;
@@ -32,6 +35,13 @@ import java.util.logging.Logger;
  */
 @Component(role = Parser.class, hint = AsciidoctorDoxiaParser.ROLE_HINT)
 public class AsciidoctorDoxiaParser extends AbstractTextParser {
+
+    @Inject
+    private XhtmlParser xhtmlParser;
+
+    @Inject
+    private MarkdownParser.MarkdownHtmlParser markdownHtmlParser;
+
 
     @Inject
     protected Provider<MavenProject> mavenProjectProvider;
@@ -85,7 +95,12 @@ public class AsciidoctorDoxiaParser extends AbstractTextParser {
             throw new ParseException(exception.getMessage(), exception);
         }
 
-        sink.rawText(asciidocHtml);
+        asciidocHtml = asciidocHtml.replaceAll("class=\".+?\"", "");
+        asciidocHtml = "<div>" + asciidocHtml + "</div>";
+        markdownHtmlParser.parse(new CharSequenceReader(asciidocHtml), sink, reference);
+//        xhtmlParser.parse(new CharSequenceReader(asciidocHtml), sink, reference);
+
+//        sink.rawText(asciidocHtml);
     }
 
     private MemoryLogHandler asciidoctorLoggingSetup(Asciidoctor asciidoctor, LogHandler logHandler, File siteDirectory) {
@@ -119,9 +134,11 @@ public class AsciidoctorDoxiaParser extends AbstractTextParser {
     }
 
     protected OptionsBuilder defaultOptions(File siteDirectory) {
+        // TODO change to html5
         return OptionsBuilder.options()
                 .backend("xhtml")
                 .safe(SafeMode.UNSAFE)
+//                .headerFooter(true)
                 .baseDir(new File(siteDirectory, ROLE_HINT));
     }
 

@@ -144,6 +144,16 @@
             <version>${doxia.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-xhtml</artifactId>
+            <version>${doxia.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-markdown</artifactId>
+            <version>${doxia.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
         </dependency>
