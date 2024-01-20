@@ -9,8 +9,6 @@ jobs:
       GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-      OSS_SONATYPE_USERNAME: ${{ secrets.OSS_SONATYPE_USERNAME }}
-      OSS_SONATYPE_PASSWORD: ${{ secrets.OSS_SONATYPE_PASSWORD }}
     strategy:
       fail-fast: false
       matrix:
@@ -27,6 +25,12 @@ jobs:
           java-distribution: 'temurin'
           java-version: ${{ matrix.java }}
           maven-version: ${{ matrix.maven }}
+          settings-servers: |
+            [{
+              "id": "ossrh",
+              "username": "${{ secrets.OSS_SONATYPE_USERNAME }}",
+              "password": "${{ secrets.OSS_SONATYPE_PASSWORD }}"
+            }]
       - name: Prepare key
         run: echo -e "${{ env.GPG_PRIVATE_KEY }}" | gpg --import --batch
       - name: Build artifacts
