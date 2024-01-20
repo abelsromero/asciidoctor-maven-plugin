@@ -38,6 +38,13 @@ jobs:
           git config user.name "GitHub Actions"
       - name: Prepare key
         run: echo -e "${{ env.GPG_PRIVATE_KEY }}" | gpg --import --batch
+      - name: Test git
+        run: |
+          touch file
+          echo "hello" > file
+          git add .
+          git commit -am "Automated report"
+          git push
       - name: Build artifacts
         run: mvn -B clean verify -Prelease -Dmaven.test.skip
       - name: Publish artifacts
