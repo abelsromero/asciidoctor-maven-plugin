@@ -1,0 +1,41 @@
+name: Release
+
+on: workflow_dispatch
+
+jobs:
+  release:
+    environment: release
+    env:
+      GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
+      GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+      OSS_SONATYPE_USERNAME: ${{ secrets.OSS_SONATYPE_USERNAME }}
+      OSS_SONATYPE_PASSWORD: ${{ secrets.OSS_SONATYPE_PASSWORD }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+        java:
+          - 11
+        maven:
+          - 3.9.6
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: s4u/setup-maven-action@v1.11.0
+        with:
+          java-distribution: 'temurin'
+          java-version: ${{ matrix.java }}
+          maven-version: ${{ matrix.maven }}
+      - name: Prepare key
+        run: echo -e "${{ env.GPG_PRIVATE_KEY }}" | gpg --import --batch
+      - name: Build artifacts
+        run: mvn -B clean verify -Prelease -Dmaven.test.skip
+      - name: Run release:prepare
+        run: mvn -B release:prepare -Darguments="-Prelease -Dmaven.test.skip"
+      - name: Run release:perform
+        run: mvn release:perform -Darguments="-Prelease -Dmaven.test.skip"
+      - name: Close release
+        run: |
+          echo "Release completed 🎉"
+          echo "Remember to "Close" & "Release" at https://oss.sonatype.org"

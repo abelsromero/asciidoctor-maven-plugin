@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.asciidoctor</groupId>
@@ -56,13 +55,6 @@
         </license>
     </licenses>
 
-    <scm>
-        <url>scm:git:git@github.com:asciidoctor/asciidoctor-maven-plugin.git</url>
-        <connection>scm:git:git@github.com:asciidoctor/asciidoctor-maven-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:asciidoctor/asciidoctor-maven-plugin.git</developerConnection>
-        <tag>asciidoctor-maven-plugin-2.2.2</tag>
-    </scm>
-
     <issueManagement>
         <url>https://github.com/asciidoctor/asciidoctor-maven-plugin/issues</url>
         <system>GitHub Issues</system>
@@ -71,12 +63,20 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.java.version>11</project.java.version>
+        <scm.organization>abelsromero</scm.organization>
         <maven.version>3.9.6</maven.version>
         <doxia.version>1.12.0</doxia.version>
         <plexus-component-metadata.version>2.2.0</plexus-component-metadata.version>
         <asciidoctorj.version>2.5.11</asciidoctorj.version>
         <jruby.version>9.4.5.0</jruby.version>
     </properties>
+
+    <scm>
+        <url>scm:git:git@github.com:${scm.organization}/asciidoctor-maven-plugin.git</url>
+        <connection>scm:git:git@github.com:${scm.organization}/asciidoctor-maven-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:${scm.organization}/asciidoctor-maven-plugin.git</developerConnection>
+        <tag>asciidoctor-maven-plugin-2.2.2</tag>
+    </scm>
 
     <dependencies>
         <dependency>
