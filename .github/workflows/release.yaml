@@ -40,10 +40,10 @@ jobs:
         run: echo -e "${{ env.GPG_PRIVATE_KEY }}" | gpg --import --batch
       - name: Build artifacts
         run: mvn -B clean verify -Prelease -Dmaven.test.skip
-      - name: Run release:prepare
-        run: mvn -B release:prepare -Darguments="-Prelease -Dmaven.test.skip"
-      - name: Run release:perform
-        run: mvn release:perform -Darguments="-Prelease -Dmaven.test.skip"
+      - name: Publish artifacts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn -B release:prepare release:perform -Darguments="-Prelease -Dmaven.test.skip"
       - name: Close release
         run: |
           echo "Release completed 🎉"
