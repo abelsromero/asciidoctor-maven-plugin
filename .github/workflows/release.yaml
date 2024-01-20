@@ -6,6 +6,7 @@ jobs:
   release:
     environment: release
     env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
@@ -31,6 +32,10 @@ jobs:
               "username": "${{ secrets.OSS_SONATYPE_USERNAME }}",
               "password": "${{ secrets.OSS_SONATYPE_PASSWORD }}"
             }]
+      - name: Configure Git User
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
       - name: Prepare key
         run: echo -e "${{ env.GPG_PRIVATE_KEY }}" | gpg --import --batch
       - name: Build artifacts
