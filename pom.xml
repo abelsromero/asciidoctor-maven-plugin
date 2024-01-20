@@ -4,7 +4,7 @@
 
     <groupId>org.asciidoctor</groupId>
     <artifactId>asciidoctor-maven-tools</artifactId>
-    <version>3.0.1-SNAPSHOT</version>
+    <version>3.0.1</version>
     <packaging>pom</packaging>
 
     <name>Asciidoctor Maven Tools</name>
@@ -75,7 +75,7 @@
         <url>scm:git:git@github.com:${scm.organization}/asciidoctor-maven-plugin.git</url>
         <connection>scm:git:git@github.com:${scm.organization}/asciidoctor-maven-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:${scm.organization}/asciidoctor-maven-plugin.git</developerConnection>
-        <tag>asciidoctor-maven-plugin-2.2.2</tag>
+        <tag>asciidoctor-maven-tools-3.0.1</tag>
     </scm>
 
     <dependencies>
