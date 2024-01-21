@@ -1,6 +1,9 @@
 name: Release
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
 permissions:
   contents: write
 
@@ -18,8 +21,6 @@ jobs:
           - ubuntu-latest
         java:
           - 11
-        maven:
-          - 3.9.6
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
@@ -44,9 +45,9 @@ jobs:
       - name: Configure GPG key
         run: echo -e "${{ env.GPG_PRIVATE_KEY }}" | gpg --import --batch
       - name: Build artifacts
-        run: mvn clean verify -B -Prelease -Dmaven.test.skip
+        run: ./mvnw clean verify -B -Prelease -Dmaven.test.skip
       - name: Publish artifacts
-        run: mvn release:prepare release:perform -B -Darguments="-Prelease -Dmaven.test.skip"
+        run: ./mvnw release:prepare release:perform -B -Darguments="-Prelease -Dmaven.test.skip"
       - name: Close release
         run: |
           echo "Release completed 🎉"
