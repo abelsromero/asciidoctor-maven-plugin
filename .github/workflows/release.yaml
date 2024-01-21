@@ -1,6 +1,10 @@
 name: Release
 
-on: workflow_dispatch
+#on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
 permissions:
   contents: write
 
@@ -25,7 +29,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Setup java
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
@@ -38,23 +42,24 @@ jobs:
               "username": "${{ secrets.OSS_SONATYPE_USERNAME }}",
               "password": "${{ secrets.OSS_SONATYPE_PASSWORD }}"
             }]
-      - name: Configure Git User
+      - name: Configure Git user
         run: |
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
       - name: Configure GPG key
         run: echo -e "${{ env.GPG_PRIVATE_KEY }}" | gpg --import --batch
-      - name: Test git
-        run: |
-          timestamp=$(date +"%Y%m%d-%H%M")
-          echo $timestamp > "report-${timestamp}.txt"
-          git add .
-          git commit -am "Automated report"
-          git push
+## Works fine and can commit file
+#      - name: Test git
+#        run: |
+#          timestamp=$(date +"%Y%m%d-%H%M")
+#          echo $timestamp > "report-${timestamp}.txt"
+#          git add .
+#          git commit -am "Automated report"
+#          git push
       - name: Build artifacts
-        run: mvn -B clean verify -Prelease -Dmaven.test.skip
+        run: mvn clean verify -B -Prelease -Dmaven.test.skip
       - name: Publish artifacts
-        run: mvn -B release:prepare release:perform -Darguments="-Prelease -Dmaven.test.skip"
+        run: mvn release:prepare release:perform -B -Darguments="-Prelease -Dmaven.test.skip"
       - name: Close release
         run: |
           echo "Release completed 🎉"
