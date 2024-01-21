@@ -12,7 +12,6 @@ jobs:
   release:
     environment: release
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
