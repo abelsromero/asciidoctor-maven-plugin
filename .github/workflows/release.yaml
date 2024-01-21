@@ -23,12 +23,16 @@ jobs:
           - 3.9.6
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: s4u/setup-maven-action@v1.11.0
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup java
+        uses: actions/setup-java@v4
         with:
-          java-distribution: 'temurin'
+          distribution: 'temurin'
           java-version: ${{ matrix.java }}
-          maven-version: ${{ matrix.maven }}
-          settings-servers: |
+      - uses: s4u/maven-settings-action@v3.0.0
+        with:
+          servers: |
             [{
               "id": "ossrh",
               "username": "${{ secrets.OSS_SONATYPE_USERNAME }}",
@@ -38,7 +42,7 @@ jobs:
         run: |
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
-      - name: Prepare key
+      - name: Configure GPG key
         run: echo -e "${{ env.GPG_PRIVATE_KEY }}" | gpg --import --batch
       - name: Test git
         run: |
