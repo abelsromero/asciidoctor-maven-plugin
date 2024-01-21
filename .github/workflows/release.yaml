@@ -26,12 +26,16 @@ jobs:
           - 3.9.6
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: s4u/setup-maven-action@v1.11.0
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
-          java-distribution: 'temurin'
+          distribution: 'temurin'
           java-version: ${{ matrix.java }}
-          maven-version: ${{ matrix.maven }}
-          settings-servers: |
+      - uses: s4u/maven-settings-action@v3.0.0
+        with:
+          servers: |
             [{
               "id": "ossrh",
               "username": "${{ secrets.OSS_SONATYPE_USERNAME }}",
