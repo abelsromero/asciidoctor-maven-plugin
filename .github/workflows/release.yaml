@@ -47,14 +47,6 @@ jobs:
           git config user.name "GitHub Actions"
       - name: Configure GPG key
         run: echo -e "${{ env.GPG_PRIVATE_KEY }}" | gpg --import --batch
-## Works fine and can commit file
-#      - name: Test git
-#        run: |
-#          timestamp=$(date +"%Y%m%d-%H%M")
-#          echo $timestamp > "report-${timestamp}.txt"
-#          git add .
-#          git commit -am "Automated report"
-#          git push
       - name: Build artifacts
         run: mvn clean verify -B -Prelease -Dmaven.test.skip
       - name: Publish artifacts
