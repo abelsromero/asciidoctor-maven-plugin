@@ -84,6 +84,30 @@ public class AsciidoctorConverterDoxiaParser extends AbstractTextParser {
         final LogHandler logHandler = getLogHandlerConfig(siteConfig);
         final MemoryLogHandler memoryLogHandler = asciidoctorLoggingSetup(asciidoctor, logHandler, siteDirectory);
 
+        // <outputDirectory>
+        MavenProject mavenProject = mavenProjectProvider.get();
+        String outputDirectory = mavenProject.getModel().getReporting().getOutputDirectory();
+
+        // TODO research in maven-site-plugin where the property is obtained and used?
+        System.out.println(outputDirectory);
+        // default:
+        //  /Users/abelsromero/github/asciidoctor-maven-examples/asciidoc-maven-site-converter-example/target/site
+
+        // <project.reporting.outputDirectory> property in pom?
+        // /Users/abelsromero/github/asciidoctor-maven-examples/asciidoc-maven-site-converter-example/target/site
+
+        // <outputDirectory> property in pom?
+        // /Users/abelsromero/github/asciidoctor-maven-examples/asciidoc-maven-site-converter-example/target/site
+
+        // <outputDirectory> property in plugin config?
+        // /Users/abelsromero/github/asciidoctor-maven-examples/asciidoc-maven-site-converter-example/target/site
+        // -> But works and creates path
+
+        // siteOutputDirectory in CLI?
+
+        // with project.reporting.outputDirectory in CLI?
+
+
         final SiteConverterDecorator siteConverter = new SiteConverterDecorator(asciidoctor);
         final Result headerMetadata = siteConverter.process(source, conversionConfig.getOptions());
 
