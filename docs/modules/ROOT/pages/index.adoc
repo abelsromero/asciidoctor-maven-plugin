@@ -10,3 +10,18 @@ The conversion can happen in 2 flavors:
 . As a xref:plugin:introduction.adoc[Maven plugin]: AsciiDoc files are converted at full Asciidoctor power independently from Maven site,
 
 . As a xref:site-integration:introduction.adoc[Maven site module]: AsciiDoc files are integrated with https://maven.apache.org/doxia/[Maven Doxia] tools, however, with a few limitations.
+
+[tabs]
+======
+Tab A::
++
+Selecting Tab A reveals a tabset with Tab Y and Tab Z.
++
+[tabs]
+====
+Tab Y:: Contents of Tab Y, nested inside Tab A.
+Tab Z:: Contents of Tab Z, nested inside Tab A.
+====
+
+Tab B:: Just text.
+======
